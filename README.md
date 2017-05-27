@@ -1,4 +1,4 @@
-Bojio! - The Android Scheduling App
+## Bojio! - The Android Scheduling App
 
 This is an Android application which compares multiple .ics files and return the timeslots when there are no events in any of the calendars simultaneously. THis is to allow people to share their calendars and be able to find a common timeslot to meet-up.
 
