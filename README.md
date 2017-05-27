@@ -1,54 +1,23 @@
-# Material File Picker [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MaterialFilePicker-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/2690) 
-Material file picker library for Android
+Bojio! - The Android Scheduling App
 
-![](https://i.imgur.com/mjxs05n.png)
+This is an Android application which compares multiple .ics files and return the timeslots when there are no events in any of the calendars simultaneously. THis is to allow people to share their calendars and be able to find a common timeslot to meet-up.
 
 ## Using
 
-Add repository url and dependency in application module gradle file:
+- Clone the repository
+- Use Android Studio's Emulator to run the app. (We used a Nexus 6P Marshmellow for all tests)
 
-```gradle
-repositories {
-    maven {
-        url  "http://dl.bintray.com/lukaville/maven" 
-    }
-}
 
-dependencies {
-    compile 'com.nbsp:library:1.2'
-}
-```
+## Branch Policy
 
-Open file picker:
+We follow the [Github Flow](https://guides.github.com/introduction/flow/) when developing the application, and name our branches as follow:
 
-```java
-new MaterialFilePicker()
-    .withActivity(this)
-    .withRequestCode(1)
-    .withFilter(Pattern.compile(".*\\.txt$")) // Filtering files and directories by file name using regexp
-    .withFilterDirectories(true) // Set directories filterable (false by default)
-    .withHiddenFiles(true) // Show hidden files and folders
-    .start();
-```
-or
-```java
-Intent intent = new Intent(this, FilePickerActivity.class);
-intent.putExtra(FilePickerActivity.ARG_FILE_FILTER, Pattern.compile(".*\\.txt$"));
-intent.putExtra(FilePickerActivity.ARG_DIRECTORIES_FILTER, true);
-intent.putExtra(FilePickerActivity.ARG_SHOW_HIDDEN, true);
-startActivityForResult(intent, 1);
-```
+- `master` is the active development branch
 
-Override on activity result:
+Local development branch naming:
 
-```java
-@Override
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
+- `feature/<your-branch-name>` for substantial new feature or function
+- `enhance/<your-branch-name>` for minor feature or function enhancement
+- `bugfix/<your-branch-name>` for bug fixes
 
-    if (requestCode == 1 && resultCode == RESULT_OK) {
-        String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
-        // Do anything with file
-    }
-}
-```
+Please make sure that you have tested the changes on the android emulator before pulling a request.
